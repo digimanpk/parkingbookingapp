@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Parking Spot Selector</title>
+</head>
+<style>
+    .box-red {
+        width:100px;
+        height:200px;
+        text-align:center;
+        border:2px solid red;
+        display:inline-block
+    }
+    .box-green {
+        width:100px;
+        height:200px;
+        border:2px solid green;
+        display:inline-block
+    }
+
+
+</style>
+<body>
+{% include "header.html" %}
+{% include "error.html" %}
+<div>
+
+    {% for slot in slots %}
+    {% if slot.id in booked_slots %}
+    <div class="box-red">
+        <form action="/cancel_slot" method="POST">
+            {{slot.name}}
+            <br/>
+            <input type="hidden" name="slot_id" value="{{slot.id}}"/><input type="hidden" name="starttime"
+                                                                            value="{{starttime.strftime('%Y-%m-%d %H:%M')}}"/><input
+                type="hidden" name="endtime" value="{{endtime.strftime('%Y-%m-%d %H:%M')}}"/> {% if slot.id in
+            user_booked_slots %}
+            <button type="submit">Cancel</button>
+            {% endif %}
+        </form>
+    </div>
+    {% else %}
+    <div class="box-green">
+        <form action="/select_slot">{{slot.name}}<br/><input type="hidden" name="slot_id" value="{{slot.id}}"/><input
+                type="hidden" name="starttime" value="{{starttime.strftime('%Y-%m-%d %H:%M')}}"/><input type="hidden"
+                                                                                                        name="endtime"
+                                                                                                        value="{{endtime.strftime('%Y-%m-%d %H:%M')}}"/>
+            <button type="submit">Book</button>
+        </form>
+    </div>
+    {% endif %}
+    {% endfor %}
+</div>
+
+
+</div>
+</body>
+</html>

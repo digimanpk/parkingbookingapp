@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Select Parking</title>
+</head>
+<body>
+{% include "header.html" %}
+{% include "error.html" %}
+<form action="do_booking" method="POST">
+    <div>
+        Select Date:
+        <select name="date" id="date">
+            <option value="2020-12-20">20/12/2020</option>
+            <option value="2020-12-21">21/12/2020</option>
+            <option value="2020-12-22">22/12/2020</option>
+            <option value="2020-12-23">23/12/2020</option>
+        </select>
+    </div>
+    <div>
+        Start Time:
+        <select name="time" id="time">
+            <option value="18:00">6PM</option>
+            <option value="19:00">7PM</option>
+            <option value="20:00">8PM</option>
+            <option value="21:00">9PM</option>
+        </select>
+    </div>
+
+    <div>
+        Select duration:
+        <select name="duration" id="duration">
+            <option value="1">1 Hr</option>
+            <option value="2">2 Hrs</option>
+            <option value="3">3 Hrs</option>
+            <option value="4">4 Hrs</option>
+
+        </select>
+    </div>
+    <button type="submit" name="submit">Select</button>
+</form>
+
+
+</body>
+</html>

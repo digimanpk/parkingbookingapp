@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu</title>
+</head>
+<body>
+{% include "header_nomenu.html" %}
+<p>Please select:</p>
+<ul>
+    {% if current_user.username=='admin' %}
+    <li><a href="{{url_for('admin.view_booking')}}">View Bookings</a></li>
+    <li><a href="{{url_for('admin.view_feedback')}}">View Feedback</a></li>
+    {% else %}
+    <li><a href="{{url_for('parkingbooking.datetime_select')}}">Book Parking</a></li>
+    <li><a href="{{url_for('parkingbooking.feedback')}}">Give Feedback</a></li>
+    {% endif %}
+
+</ul>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View Feedback</title>
+</head>
+<body>
+{% include "header.html" %}
+<br/>
+<div>
+    <table style="border:2px solid black;padding:2px">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Feedback</th>
+        </tr>
+        {%for feedback in feedbacks %}
+        <tr>
+            <td>{{feedback.id}}</td>
+            <td>{{feedback.user.first_name}}</td>
+            <td>{{feedback.feedback}}</td>
+            {% endfor %}
+    </table>
+</div>
+</body>
+</html>

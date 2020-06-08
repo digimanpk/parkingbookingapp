@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View Parking</title>
+    <style>
+    .box-red {
+        width:100px;
+        height:200px;
+        text-align:center;
+        border:2px solid red;
+        display:inline-block
+    }
+    .box-green {
+        width:100px;
+        height:200px;
+        border:2px solid green;
+        display:inline-block
+    }
+
+
+    </style>
+</head>
+<body>
+{% include "header.html" %}
+<br/>
+<div>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Parking Name</th>
+            <th>Zone</th>
+            <th>Start Time</th>
+            <th>Start Time</th>
+        </tr>
+
+        {% for slot in slots %}
+        {% for booking in slot.bookings %}
+        <tr>
+            <td>{{slot.id}}</td>
+            <td>{{slot.name}}</td>
+            <td>{{slot.zone}}</td>
+            <td>{{booking.start_time}}</td>
+            <td>{{booking.end_time}}</td>
+        </tr>
+        {% endfor %}
+        {% endfor %}
+    </table>
+</div>
+
+
+</body>
+</html>
